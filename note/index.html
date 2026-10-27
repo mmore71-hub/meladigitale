@@ -3,351 +3,156 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mela Digitale</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11' shape-rendering='crispEdges' fill='%231a84ff'%3E%3Crect x='5' y='0' width='1' height='2'/%3E%3Crect x='2' y='2' width='3' height='1'/%3E%3Crect x='6' y='2' width='3' height='1'/%3E%3Crect x='1' y='3' width='9' height='1'/%3E%3Crect x='0' y='4' width='11' height='4'/%3E%3Crect x='1' y='8' width='9' height='2'/%3E%3Crect x='2' y='10' width='3' height='1'/%3E%3Crect x='6' y='10' width='3' height='1'/%3E%3C/svg%3E">
-<meta name="description" content="Mela Digitale — tecnologia, famiglia e qualche esperimento. Da Milano.">
+<title>Note · Mela Digitale</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11' shape-rendering='crispEdges' fill='%232997ff'%3E%3Crect x='5' y='0' width='1' height='2'/%3E%3Crect x='2' y='2' width='3' height='1'/%3E%3Crect x='6' y='2' width='3' height='1'/%3E%3Crect x='1' y='3' width='9' height='1'/%3E%3Crect x='0' y='4' width='11' height='4'/%3E%3Crect x='1' y='8' width='9' height='2'/%3E%3Crect x='2' y='10' width='3' height='1'/%3E%3Crect x='6' y='10' width='3' height='1'/%3E%3C/svg%3E">
+<meta name="description" content="Note di Mela Digitale: trucchi, configurazioni e piccole scoperte dal mondo Apple e dintorni.">
 <style>
   :root {
     color-scheme: dark;
     --bg: #050507;
     --fg: #f5f7fb;
+    --text: #d6dbe5;
     --muted: #a4adbd;
     --card: #101216;
     --card-hover: #141821;
     --line: #292f3b;
-    --accent: #557cff;
-    --accent-bright: #6b8cff;
-    --accent-soft: rgba(85,124,255,.13);
+    --accent: #2997ff;
+    --accent-bright: #5ab0ff;
+    --accent-soft: rgba(41,151,255,.13);
     --content: 1120px;
+    --reading: 720px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     min-height: 100vh;
-    background:
-      radial-gradient(ellipse at 50% 0%, rgba(50,75,150,.10), transparent 42rem),
-      var(--bg);
+    background: radial-gradient(ellipse at 50% 0%, rgba(30,100,170,.10), transparent 42rem), var(--bg);
     color: var(--fg);
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-
   a { color: inherit; }
   .wrap { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+  .narrow { width: min(var(--reading), calc(100% - 48px)); margin-inline: auto; }
 
-  .topbar { padding: 24px 0 0; }
-  .nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: clamp(22px, 4vw, 46px);
-    color: #c9cfdb;
-    font-size: 14px;
-    font-weight: 550;
-  }
+  .topbar { padding: 22px 0 0; }
+  .bar { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 650; font-size: 15px; letter-spacing: -.02em; }
+  .brand-logo { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: linear-gradient(145deg, #0e1c30, #0a121e); box-shadow: inset 0 0 0 1px rgba(255,255,255,.035); }
+  .brand-logo svg { width: 19px; height: 19px; }
+  .nav { display: flex; align-items: center; gap: clamp(18px, 3vw, 34px); color: #c9cfdb; font-size: 14px; font-weight: 550; }
   .nav a { text-decoration: none; transition: color .18s ease; }
-  .nav a:hover, .nav a:focus-visible { color: var(--accent-bright); }
-  .nav .nav-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-inline: -24px; }
+  .nav a:hover, .nav a:focus-visible, .nav a[aria-current="page"] { color: var(--accent-bright); }
+  a:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 4px; border-radius: 6px; }
 
-  header.hero { padding: 54px 0 34px; text-align: center; }
-  .logo {
-    width: 76px; height: 76px; margin: 0 auto 20px;
-    display: grid; place-items: center;
-    border-radius: 23px;
-    background: linear-gradient(145deg, #111a32, #0c1120);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.035);
-  }
-  .logo svg { width: 43px; height: 43px; }
-  h1 {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
-    font-size: clamp(48px, 7.5vw, 82px);
-    font-weight: 750;
-    letter-spacing: -.065em;
-    line-height: 1.04;
-  }
-  h1 span {
-    color: var(--accent);
-    background: linear-gradient(115deg, #7290ff, #4d73ff 70%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .tagline {
-    margin: 15px auto 0;
-    max-width: 620px;
-    font-size: clamp(17px, 2.2vw, 22px);
-    color: var(--muted);
-    font-weight: 400;
-    letter-spacing: -.02em;
-  }
+  .label { display: inline-block; color: var(--accent-bright); font-size: 12px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
 
-  main { padding: 18px 0 0; }
-  .section-kicker {
-    margin-bottom: 14px;
-    color: var(--accent-bright);
-    font-size: 11px;
-    font-weight: 750;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-  }
-  .feature-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.55fr) minmax(300px, 1fr);
-    gap: 16px;
-    align-items: stretch;
-  }
-  .card {
-    position: relative;
-    min-width: 0;
-    overflow: hidden;
+  /* elenco note */
+  .page-head { padding: 64px 0 34px; }
+  .page-head h1 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif; font-size: clamp(42px, 6vw, 64px); font-weight: 750; letter-spacing: -.06em; line-height: 1.04; margin-top: 12px; }
+  .page-head p { margin-top: 14px; color: var(--muted); font-size: clamp(17px, 2vw, 20px); letter-spacing: -.02em; max-width: 560px; }
+  .list { list-style: none; display: grid; gap: 14px; }
+  .entry {
+    display: flex; align-items: center; gap: 18px;
+    text-decoration: none;
     background: linear-gradient(145deg, rgba(19,22,29,.97), rgba(12,14,18,.98));
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: clamp(22px, 3vw, 34px);
-    box-shadow: 0 12px 36px rgba(0,0,0,.12);
+    border: 1px solid var(--line); border-radius: 18px;
+    padding: 22px 24px;
     transition: border-color .2s ease, background .2s ease, transform .2s ease;
   }
-  .card-link { display: block; color: inherit; text-decoration: none; }
-  .card-link:hover { transform: translateY(-3px); border-color: rgba(85,124,255,.65); background: var(--card-hover); }
-  .card-link:focus-visible, .btn:focus-visible, .nav a:focus-visible {
-    outline: 2px solid var(--accent-bright);
-    outline-offset: 4px;
-  }
-  .card-label {
-    display: block;
-    margin-bottom: 12px;
-    color: var(--accent-bright);
-    font-size: 12px;
-    font-weight: 750;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
-  .card h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 680; letter-spacing: -.045em; line-height: 1.13; margin-bottom: 12px; }
-  .card p { color: var(--muted); font-size: 16px; max-width: 48ch; }
-  .feature-card { min-height: 390px; display: flex; flex-direction: column; }
-  .feature-card h2 { max-width: 540px; }
-  .feature-card .feature-title { font-size: clamp(29px, 3.4vw, 40px); }
-  .feature-card .feature-copy { max-width: 54ch; }
-  .article-list { display: grid; gap: 0; margin-top: auto; padding-top: 24px; }
-  .article-placeholder {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 15px 0 0;
-    border-top: 1px solid rgba(164,173,189,.20);
-  }
-  .article-placeholder + .article-placeholder { margin-top: 14px; }
-  .article-mark {
-    display: grid;
-    place-items: center;
-    flex: 0 0 48px;
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    color: var(--accent-bright);
-    background: linear-gradient(145deg, rgba(85,124,255,.22), rgba(85,124,255,.05));
-    border: 1px solid rgba(85,124,255,.2);
-  }
-  .article-mark svg { width: 22px; height: 22px; }
-  .article-text { min-width: 0; }
-  .article-text strong { display: block; font-size: 14px; font-weight: 600; }
-  .article-text span { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; }
-  .card-side { display: grid; grid-template-rows: 1fr 1fr; gap: 16px; }
-  .card-side .card { display: flex; flex-direction: column; justify-content: center; min-height: 185px; padding: clamp(22px, 2.5vw, 30px); }
-  .card-side .card h2 { font-size: 27px; margin-bottom: 7px; }
-  .card-side .card p { font-size: 15px; }
-  .card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; }
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    font-size: 13px;
-    line-height: 1.4;
-    font-weight: 600;
-    color: #88a1ff;
-    background: var(--accent-soft);
-    border: 1px solid rgba(85,124,255,.13);
-    padding: 5px 11px;
-    border-radius: 999px;
-  }
+  .entry:hover { transform: translateY(-3px); border-color: rgba(41,151,255,.65); background: var(--card-hover); }
+  .mark { display: grid; place-items: center; flex: 0 0 48px; width: 48px; height: 48px; border-radius: 12px; color: var(--accent-bright); background: linear-gradient(145deg, rgba(41,151,255,.22), rgba(41,151,255,.05)); border: 1px solid rgba(41,151,255,.2); }
+  .mark svg { width: 22px; height: 22px; }
+  .entry-text { flex: 1; min-width: 0; }
+  .entry-text h2 { font-size: clamp(19px, 2.4vw, 23px); font-weight: 680; letter-spacing: -.035em; line-height: 1.2; }
+  .entry-text p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+  .entry-text .date { display: block; color: #7f899b; font-size: 12px; margin-top: 8px; }
   .arrow { color: var(--accent-bright); font-size: 22px; line-height: 1; transition: transform .2s ease; }
-  .card-link:hover .arrow { transform: translateX(4px); }
+  .entry:hover .arrow { transform: translateX(4px); }
 
-  .contact { text-align: center; padding: 70px 0 66px; }
-  .contact h2 { font-size: clamp(28px, 4vw, 36px); font-weight: 700; letter-spacing: -.04em; }
-  .contact p { color: var(--muted); margin-top: 7px; font-size: 16px; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    margin-top: 22px;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 650;
-    padding: 11px 19px;
-    border-radius: 999px;
-    box-shadow: 0 6px 22px rgba(85,124,255,.18);
-    transition: transform .18s ease, background .18s ease;
-  }
-  .btn:hover { background: #6688ff; transform: translateY(-2px); }
+  /* articolo */
+  article { padding: 60px 0 20px; }
+  article h1 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif; font-size: clamp(34px, 5.4vw, 54px); font-weight: 750; letter-spacing: -.055em; line-height: 1.06; margin: 14px 0 14px; }
+  .meta { color: #7f899b; font-size: 14px; margin-bottom: 34px; }
+  .lead { font-size: clamp(18px, 2.2vw, 21px); line-height: 1.55; color: var(--fg); letter-spacing: -.015em; margin-bottom: 26px; }
+  article h2 { font-size: clamp(23px, 3vw, 28px); font-weight: 680; letter-spacing: -.035em; line-height: 1.2; margin: 48px 0 14px; }
+  article h3 { font-size: 19px; font-weight: 650; letter-spacing: -.02em; margin: 28px 0 8px; }
+  article p { font-size: 17px; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
+  article ul, article ol { margin: 0 0 18px 22px; font-size: 17px; line-height: 1.65; color: var(--text); }
+  article li { margin-bottom: 7px; }
+  article li::marker { color: var(--accent-bright); }
+  article strong { color: var(--fg); font-weight: 650; }
+  article a { color: var(--accent-bright); }
+  code { font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; font-size: .86em; color: #cfe6ff; background: #12151c; border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px; }
+  .table-wrap { overflow-x: auto; margin: 8px 0 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; color: var(--text); }
+  th { color: var(--accent-bright); font-size: 11px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+  tr:last-child td { border-bottom: none; }
+  .callout { background: linear-gradient(145deg, rgba(41,151,255,.12), rgba(41,151,255,.03)); border: 1px solid rgba(41,151,255,.28); border-radius: 16px; padding: 18px 22px; margin: 24px 0; }
+  .callout p:last-child { margin-bottom: 0; }
+  .back { display: inline-flex; align-items: center; gap: 8px; margin: 26px 0 0; padding: 9px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; text-decoration: none; color: #7cc0ff; background: var(--accent-soft); border: 1px solid rgba(41,151,255,.13); transition: transform .18s ease; }
+  .back:hover { transform: translateX(-3px); }
 
-  footer {
-    border-top: 1px solid rgba(164,173,189,.16);
-    padding: 20px 0 28px;
-    font-size: 12px;
-    color: #7f899b;
-    text-align: center;
-  }
-
-  @media (max-width: 760px) {
-    .wrap { width: min(100% - 36px, 560px); }
-    .topbar { padding-top: 20px; }
-    header.hero { padding: 44px 0 26px; }
-    .logo { width: 66px; height: 66px; border-radius: 20px; margin-bottom: 18px; }
-    .logo svg { width: 38px; height: 38px; }
-    .tagline { max-width: 420px; }
-    main { padding-top: 12px; }
-    .feature-grid { grid-template-columns: 1fr; }
-    .feature-card { min-height: 0; }
-    .card-side { grid-template-rows: auto; grid-template-columns: 1fr 1fr; }
-    .card-side .card { min-height: 190px; }
-    .contact { padding: 54px 0 50px; }
-  }
+  footer { margin-top: 70px; border-top: 1px solid rgba(164,173,189,.16); padding: 20px 0 28px; font-size: 12px; color: #7f899b; text-align: center; }
 
   @media (max-width: 520px) {
-    .wrap { width: calc(100% - 32px); }
-    .nav { gap: 22px; font-size: 13px; }
-    .nav .nav-dot { margin-inline: -14px; }
-    header.hero { padding-top: 38px; }
-    h1 { font-size: clamp(42px, 12vw, 58px); letter-spacing: -.06em; }
-    .tagline { font-size: 16px; max-width: 320px; }
-    .card { border-radius: 16px; padding: 23px; }
-    .feature-card .feature-title { font-size: 29px; }
-    .card-side { grid-template-columns: 1fr; }
-    .card-side .card { min-height: 0; padding: 23px; }
-    .card-side .card h2 { font-size: 25px; }
-    .article-placeholder { align-items: flex-start; }
-    .article-mark { flex-basis: 42px; width: 42px; height: 42px; border-radius: 10px; }
-    .contact { padding: 48px 0 42px; }
+    .wrap, .narrow { width: calc(100% - 32px); }
+    .brand-name { display: none; }
+    .nav { gap: 20px; font-size: 13px; }
+    .page-head { padding: 44px 0 26px; }
+    .entry { padding: 18px; gap: 14px; align-items: flex-start; }
+    .mark { flex-basis: 42px; width: 42px; height: 42px; border-radius: 10px; }
+    .arrow { display: none; }
+    article { padding-top: 40px; }
   }
-
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
   }
 </style>
 </head>
 <body>
 
 <nav class="topbar" aria-label="Navigazione principale">
-  <div class="wrap nav">
-    <a href="/note/">Note</a>
-    <span class="nav-dot" aria-hidden="true"></span>
-    <a href="/#progetti">Progetti</a>
-    <a href="/#lab">Lab</a>
+  <div class="wrap bar">
+    <a class="brand" href="/"><span class="brand-logo"><svg viewBox="0 0 11 11" shape-rendering="crispEdges" aria-hidden="true"><g fill="var(--accent)"><rect x="5" y="0" width="1" height="2"/><rect x="2" y="2" width="3" height="1"/><rect x="6" y="2" width="3" height="1"/><rect x="1" y="3" width="9" height="1"/><rect x="0" y="4" width="11" height="4"/><rect x="1" y="8" width="9" height="2"/><rect x="2" y="10" width="3" height="1"/><rect x="6" y="10" width="3" height="1"/></g><rect x="2" y="4" width="1" height="2" fill="#ffffff" opacity=".45"/></svg></span><span class="brand-name">Mela Digitale</span></a>
+    <div class="nav">
+      <a href="/note/" aria-current="page">Note</a>
+      <a href="/#progetti">Progetti</a>
+      <a href="/#lab">Lab</a>
+    </div>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="logo" aria-hidden="true">
-      <!-- mela in pixel: disegno originale -->
-      <svg viewBox="0 0 11 11" shape-rendering="crispEdges">
-        <g fill="var(--accent)">
-          <rect x="5" y="0" width="1" height="2"/>
-          <rect x="2" y="2" width="3" height="1"/>
-          <rect x="6" y="2" width="3" height="1"/>
-          <rect x="1" y="3" width="9" height="1"/>
-          <rect x="0" y="4" width="11" height="4"/>
-          <rect x="1" y="8" width="9" height="2"/>
-          <rect x="2" y="10" width="3" height="1"/>
-          <rect x="6" y="10" width="3" height="1"/>
-        </g>
-        <rect x="2" y="4" width="1" height="2" fill="#ffffff" opacity=".45"/>
-      </svg>
-    </div>
-    <h1>Mela <span>Digitale</span></h1>
-    <p class="tagline">Tecnologia, famiglia e qualche esperimento. Da Milano.</p>
-  </div>
+<main class="wrap">
+<header class="page-head">
+  <span class="label">Note · 2 articoli</span>
+  <h1>Note</h1>
+  <p>Trucchi, configurazioni e piccole scoperte dal mondo Apple e dintorni.</p>
 </header>
-
-<main>
-  <section aria-label="Esplora Mela Digitale">
-    <div class="wrap">
-      <div class="feature-grid">
-        <a class="card card-link feature-card" href="/note/">
-          <span class="card-label">Note · 2 articoli</span>
-          <h2 class="feature-title">Piccole scoperte,<br>soluzioni concrete.</h2>
-          <p class="feature-copy">Trucchi, configurazioni e piccole scoperte dal mondo Apple e dintorni.</p>
-
-          <div class="article-list" aria-label="Articoli disponibili">
-            <div class="article-placeholder">
-              <span class="article-mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="5" y="3.5" width="14" height="17" rx="2"/>
-                  <path d="M8 8h8M8 12h8M8 16h5"/>
-                </svg>
-              </span>
-              <span class="article-text">
-                <strong>In famiglia, configurato bene</strong>
-                <span>Account, acquisti e controlli per i figli</span>
-              </span>
-            </div>
-            <div class="article-placeholder">
-              <span class="article-mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="8.5"/>
-                  <path d="M12 7v5l3.5 2"/>
-                </svg>
-              </span>
-              <span class="article-text">
-                <strong>Come ho creato meladigitale.com</strong>
-                <span>Dominio, posta e sito in un pomeriggio</span>
-              </span>
-            </div>
-          </div>
-          <div class="card-bottom">
-            <span class="pill">Esplora le note</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </div>
-        </a>
-
-        <div class="card-side">
-          <article class="card" id="progetti">
-            <span class="card-label">In costruzione</span>
-            <h2>Progetti</h2>
-            <p>Piccole app e strumenti fatti in casa, per risolvere problemi veri.</p>
-            <div class="card-bottom">
-              <span class="pill">In arrivo</span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </div>
-          </article>
-          <article class="card" id="lab">
-            <span class="card-label">Area sperimentale</span>
-            <h2>Lab</h2>
-            <p>Esperimenti, prove e idee che non sono ancora diventate qualcosa.</p>
-            <div class="card-bottom">
-              <span class="pill">In arrivo</span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
+<ul class="list">
+    <li><a class="entry" href="famiglia.html">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6.5 10v9h11v-9"/><path d="M10 19v-5h4v5"/></svg></span>
+      <span class="entry-text">
+        <h2>In famiglia, configurato bene</h2>
+        <p>Account, acquisti, spazio iCloud e controlli per i figli: come impostare In famiglia ed evitare gli errori più comuni.</p>
+        <span class="date">27 ottobre 2026</span>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a></li>
+    <li><a class="entry" href="dominio.html">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+      <span class="entry-text">
+        <h2>Come ho creato meladigitale.com in un pomeriggio</h2>
+        <p>Dominio, posta e sito: iCloud+, Cloudflare e GitHub Pages, con i tre intoppi incontrati e come risolverli.</p>
+        <span class="date">27 ottobre 2026</span>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a></li>
+</ul>
 </main>
-
-<section class="contact">
-  <div class="wrap">
-    <h2>Scrivimi</h2>
-    <p>Marco</p>
-    <a class="btn" href="mailto:info@meladigitale.com">info@meladigitale.com</a>
-  </div>
-</section>
 
 <footer>
   <div class="wrap">© <span id="y">2026</span> Mela Digitale · Marco</div>
