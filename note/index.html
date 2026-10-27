@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Note · Mela Digitale</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11' shape-rendering='crispEdges' fill='%231a84ff'%3E%3Crect x='5' y='0' width='1' height='2'/%3E%3Crect x='2' y='2' width='3' height='1'/%3E%3Crect x='6' y='2' width='3' height='1'/%3E%3Crect x='1' y='3' width='9' height='1'/%3E%3Crect x='0' y='4' width='11' height='4'/%3E%3Crect x='1' y='8' width='9' height='2'/%3E%3Crect x='2' y='10' width='3' height='1'/%3E%3Crect x='6' y='10' width='3' height='1'/%3E%3C/svg%3E">
+<meta name="description" content="Note di Mela Digitale: trucchi, configurazioni e piccole scoperte dal mondo Apple e dintorni.">
+<style>
+  :root {
+    --bg: #fbfbfd;
+    --fg: #1d1d1f;
+    --muted: #6e6e73;
+    --card: #ffffff;
+    --line: #e5e5ea;
+    --code: #f2f2f5;
+    --accent: #0071e3;
+    --accent-soft: rgba(0,113,227,.10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --fg: #f5f5f7;
+      --muted: #a1a1a6;
+      --card: #1c1c1e;
+      --line: #2c2c2e;
+      --code: #1c1c1e;
+      --accent: #2997ff;
+      --accent-soft: rgba(41,151,255,.14);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav { border-bottom: 1px solid var(--line); }
+  nav .inner {
+    max-width: 680px; margin: 0 auto; padding: 14px 22px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px;
+  }
+  nav .brand { color: var(--fg); font-weight: 600; }
+  nav .back { color: var(--muted); }
+
+  article { max-width: 680px; margin: 0 auto; padding: 64px 22px 40px; }
+  .kicker {
+    display: inline-block;
+    font-size: 13px; font-weight: 500;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 4px 10px; border-radius: 999px;
+  }
+  h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+    font-size: clamp(32px, 6vw, 46px);
+    font-weight: 700; letter-spacing: -0.025em; line-height: 1.1;
+    margin: 18px 0 14px;
+  }
+  .meta { color: var(--muted); font-size: 15px; margin-bottom: 40px; }
+  .lead { font-size: 21px; line-height: 1.5; margin-bottom: 28px; }
+
+  h2 {
+    font-size: 26px; font-weight: 700; letter-spacing: -0.015em;
+    margin: 48px 0 14px;
+  }
+  h3 { font-size: 19px; font-weight: 600; margin: 28px 0 8px; }
+  p { font-size: 17px; margin-bottom: 16px; }
+  ul, ol { margin: 0 0 18px 22px; font-size: 17px; }
+  li { margin-bottom: 6px; }
+  strong { font-weight: 600; }
+
+  code {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: .88em;
+    background: var(--code);
+    padding: 2px 6px; border-radius: 6px;
+  }
+  .table-wrap { overflow-x: auto; margin: 8px 0 22px; }
+  table {
+    border-collapse: collapse; width: 100%;
+    font-size: 15px;
+    background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden;
+  }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { font-weight: 600; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+  tr:last-child td { border-bottom: none; }
+
+  .callout {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin: 22px 0;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 22px 40px;
+    font-size: 13px; color: var(--muted);
+    text-align: center;
+  }
+  .list { list-style: none; margin: 0; }
+  .list li { margin: 0 0 16px; }
+  .entry {
+    display: block; color: inherit;
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 22px 24px; transition: transform .15s ease, border-color .15s ease;
+  }
+  .entry:hover { text-decoration: none; transform: translateY(-2px); border-color: var(--accent); }
+  .entry h2 { font-size: 21px; margin: 0 0 6px; }
+  .entry p { color: var(--muted); font-size: 16px; margin: 0 0 8px; }
+  .entry .date { font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="../">Mela Digitale</a>
+    <a class="back" href="../">← Home</a>
+  </div>
+</nav>
+
+<article>
+  <span class="kicker">Note</span>
+  <h1>Note</h1>
+  <p class="lead">Trucchi, configurazioni e piccole scoperte dal mondo Apple e dintorni.</p>
+  <ul class="list">
+    <li><a class="entry" href="famiglia.html">
+      <h2>In famiglia, configurato bene</h2>
+      <p>Account, acquisti, spazio iCloud e controlli per i figli: come impostare In famiglia ed evitare gli errori più comuni.</p>
+      <span class="date">27 ottobre 2026</span>
+    </a></li>
+    <li><a class="entry" href="dominio.html">
+      <h2>Come ho creato meladigitale.com in un pomeriggio</h2>
+      <p>Dominio, posta e sito: iCloud+, Cloudflare e GitHub Pages, con i tre intoppi incontrati e come risolverli.</p>
+      <span class="date">27 ottobre 2026</span>
+    </a></li>
+  </ul>
+</article>
+
+<footer>© <span id="y">2026</span> Mela Digitale · Marco</footer>
+
+<script>
+  try { document.getElementById('y').textContent = new Date().getFullYear(); } catch (e) {}
+</script>
+</body>
+</html>

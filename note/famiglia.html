@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>In famiglia, configurato bene · Mela Digitale</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11' shape-rendering='crispEdges' fill='%231a84ff'%3E%3Crect x='5' y='0' width='1' height='2'/%3E%3Crect x='2' y='2' width='3' height='1'/%3E%3Crect x='6' y='2' width='3' height='1'/%3E%3Crect x='1' y='3' width='9' height='1'/%3E%3Crect x='0' y='4' width='11' height='4'/%3E%3Crect x='1' y='8' width='9' height='2'/%3E%3Crect x='2' y='10' width='3' height='1'/%3E%3Crect x='6' y='10' width='3' height='1'/%3E%3C/svg%3E">
+<meta name="description" content="Come configurare bene In famiglia di Apple: account, acquisti, spazio iCloud, controlli per i figli e gli errori più comuni.">
+<style>
+  :root {
+    --bg: #fbfbfd;
+    --fg: #1d1d1f;
+    --muted: #6e6e73;
+    --card: #ffffff;
+    --line: #e5e5ea;
+    --code: #f2f2f5;
+    --accent: #0071e3;
+    --accent-soft: rgba(0,113,227,.10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --fg: #f5f5f7;
+      --muted: #a1a1a6;
+      --card: #1c1c1e;
+      --line: #2c2c2e;
+      --code: #1c1c1e;
+      --accent: #2997ff;
+      --accent-soft: rgba(41,151,255,.14);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav { border-bottom: 1px solid var(--line); }
+  nav .inner {
+    max-width: 680px; margin: 0 auto; padding: 14px 22px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px;
+  }
+  nav .brand { color: var(--fg); font-weight: 600; }
+  nav .back { color: var(--muted); }
+
+  article { max-width: 680px; margin: 0 auto; padding: 64px 22px 40px; }
+  .kicker {
+    display: inline-block;
+    font-size: 13px; font-weight: 500;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 4px 10px; border-radius: 999px;
+  }
+  h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+    font-size: clamp(32px, 6vw, 46px);
+    font-weight: 700; letter-spacing: -0.025em; line-height: 1.1;
+    margin: 18px 0 14px;
+  }
+  .meta { color: var(--muted); font-size: 15px; margin-bottom: 40px; }
+  .lead { font-size: 21px; line-height: 1.5; margin-bottom: 28px; }
+
+  h2 {
+    font-size: 26px; font-weight: 700; letter-spacing: -0.015em;
+    margin: 48px 0 14px;
+  }
+  h3 { font-size: 19px; font-weight: 600; margin: 28px 0 8px; }
+  p { font-size: 17px; margin-bottom: 16px; }
+  ul, ol { margin: 0 0 18px 22px; font-size: 17px; }
+  li { margin-bottom: 6px; }
+  strong { font-weight: 600; }
+
+  code {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: .88em;
+    background: var(--code);
+    padding: 2px 6px; border-radius: 6px;
+  }
+  .table-wrap { overflow-x: auto; margin: 8px 0 22px; }
+  table {
+    border-collapse: collapse; width: 100%;
+    font-size: 15px;
+    background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden;
+  }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { font-weight: 600; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+  tr:last-child td { border-bottom: none; }
+
+  .callout {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin: 22px 0;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 22px 40px;
+    font-size: 13px; color: var(--muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="../">Mela Digitale</a>
+    <a class="back" href="./">← Tutte le note</a>
+  </div>
+</nav>
+
+<article>
+  <span class="kicker">Note</span>
+  <h1>In famiglia, configurato bene</h1>
+  <p class="meta">27 ottobre 2026 · 7 minuti di lettura</p>
+
+  <p class="lead">In una casa con più iPhone, iPad e Mac, la funzione In famiglia di Apple è quella che mette ordine: acquisti, abbonamenti, spazio iCloud e controlli per i figli in un unico posto. Funziona benissimo, a patto di configurarla nel modo giusto. Ecco come la imposterei, e gli errori che vedo più spesso.</p>
+
+  <h2>1. La regola d'oro: un account per persona</h2>
+  <p>L'errore più diffuso è anche il più semplice: <strong>usare lo stesso Account Apple per più persone</strong>, magari per non comprare due volte la stessa app. Il risultato è che messaggi, foto, contatti, cronologia e posizione si mescolano tra tutti i dispositivi. E il giorno in cui serve separarli è un lavoro lungo.</p>
+  <p>In famiglia esiste proprio per evitarlo: ognuno ha il proprio account, con i propri dati, e si condivide solo quello che ha senso condividere.</p>
+
+  <h2>2. Cosa si condivide</h2>
+  <p>Un gruppo In famiglia comprende <strong>fino a sei persone</strong>: l'organizzatore più altri cinque membri. Si può condividere:</p>
+  <ul>
+    <li><strong>Gli acquisti</strong> su App Store, Apple Books e iTunes Store: un'app comprata una volta si scarica su tutti i dispositivi della famiglia. Ognuno può comunque nascondere i propri acquisti agli altri.</li>
+    <li><strong>Gli abbonamenti Apple</strong>, come Apple Music, Apple TV e Apple Arcade, quando sono in versione famiglia.</li>
+    <li><strong>Lo spazio iCloud+</strong>: un solo piano per tutti, ma ognuno vede solo i propri file e le proprie foto.</li>
+    <li><strong>Un calendario "Famiglia"</strong>, creato in automatico, per gli impegni comuni.</li>
+    <li><strong>La posizione e i dispositivi</strong> in Dov'è, utile per ritrovare un iPhone perso in casa o in giro.</li>
+  </ul>
+
+  <h2>3. L'organizzatore e i pagamenti</h2>
+  <p>Il gruppo lo crea un adulto, che diventa l'<strong>organizzatore</strong>. Con la condivisione acquisti attiva, tutto quello che comprano i membri viene addebitato sul metodo di pagamento dell'organizzatore. Conviene saperlo prima, per non avere sorprese sull'estratto conto.</p>
+  <p>Un dettaglio che si scopre tardi: per condividere gli acquisti, tutti i membri devono essere <strong>nello stesso paese</strong>, quello indicato nell'indirizzo di fatturazione dell'account.</p>
+
+  <h2>4. I figli</h2>
+
+  <h3>Un account bambino vero</h3>
+  <p>Per i più piccoli, l'account va creato dal genitore dentro In famiglia, come <strong>account bambino</strong>. È l'unico modo per avere a disposizione tutti i controlli parentali. Le impostazioni adatte all'età vengono applicate subito, anche se il resto della configurazione si completa più tardi.</p>
+  <p>Con iOS 26 è diventato più facile rimediare se il figlio usa già un account normale: il sistema chiede ai genitori di confermare la data di nascita e permette di convertirlo in account bambino.</p>
+
+  <h3>Chiedi di acquistare</h3>
+  <p>Con <strong>Chiedi di acquistare</strong> attivo, ogni download o acquisto del figlio arriva come richiesta sul telefono del genitore, che approva o rifiuta. Vale anche per le app gratuite, ed è il modo più semplice per sapere cosa viene installato.</p>
+
+  <h3>Tempo di utilizzo</h3>
+  <p>Da <strong>Impostazioni → Tempo di utilizzo</strong> si gestiscono limiti per categorie di app, orari di "riposo" e contenuti consentiti. Due consigli pratici:</p>
+  <ul>
+    <li>Lascia <strong>sempre consentite</strong> le app per chiamare e scrivere ai genitori, anche durante il riposo.</li>
+    <li>Imposta un <strong>codice di Tempo di utilizzo</strong> diverso dal codice di sblocco del tuo iPhone: i figli imparano in fretta.</li>
+  </ul>
+
+  <h3>Le novità di iOS 26 per i ragazzi</h3>
+  <p>I genitori possono condividere con le app solo la <strong>fascia d'età</strong> del figlio, non la data di nascita, e decidere se farlo sempre, app per app o mai. Inoltre i ragazzi tra 13 e 17 anni ricevono per impostazione predefinita protezioni come il filtro dei contenuti web e la Comunicazione sicura, anche senza un account bambino.</p>
+
+  <h2>5. La posizione, con criterio</h2>
+  <p>Condividere la posizione in famiglia è comodo e rassicurante, ma non deve essere automatico per tutti e per sempre. Si può scegliere con chi condividerla, membro per membro. Con i ragazzi più grandi è una scelta da fare insieme, spiegando il perché: funziona molto meglio di un controllo imposto e scoperto per caso.</p>
+
+  <h2>6. Gli errori più comuni</h2>
+  <ul>
+    <li><strong>Account condiviso</strong> tra più persone, invece di un account ciascuno.</li>
+    <li><strong>Figlio con un account da adulto</strong>, magari con una data di nascita sbagliata: niente controlli parentali.</li>
+    <li><strong>Chiedi di acquistare spento</strong>, e le sorprese arrivano con l'addebito.</li>
+    <li><strong>Spazio iCloud pagato due volte</strong>: due abbonamenti separati quando ne bastava uno condiviso.</li>
+    <li><strong>Nessun contatto di recupero</strong>: se qualcuno perde l'accesso al proprio account, un familiare impostato come contatto di recupero può aiutarlo a rientrare. Vale la pena configurarlo per ogni adulto.</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>Checklist in cinque minuti:</strong> un account per persona · figli con account bambino · Chiedi di acquistare attivo · un solo piano iCloud+ condiviso · contatto di recupero impostato per ogni adulto.</p>
+  </div>
+
+  <h2>In sintesi</h2>
+  <p>In famiglia non è solo un modo per risparmiare sulle app. Configurato bene, è il punto in cui si decide cosa è di tutti e cosa resta di ciascuno, e in cui i figli possono crescere con i loro dispositivi con qualche protezione in più. Mezz'ora di configurazione oggi evita parecchi grattacapi domani.</p>
+</article>
+
+<footer>© <span id="y">2026</span> Mela Digitale · Marco</footer>
+
+<script>
+  try { document.getElementById('y').textContent = new Date().getFullYear(); } catch (e) {}
+</script>
+</body>
+</html>
