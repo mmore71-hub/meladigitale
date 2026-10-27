@@ -1,1 +1,209 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Come ho creato meladigitale.com · Mela Digitale</title>
+<meta name="description" content="Dominio, posta e sito in un pomeriggio: iCloud+, Cloudflare e GitHub Pages, con gli intoppi incontrati e come risolverli.">
+<style>
+  :root {
+    --bg: #fbfbfd;
+    --fg: #1d1d1f;
+    --muted: #6e6e73;
+    --card: #ffffff;
+    --line: #e5e5ea;
+    --code: #f2f2f5;
+    --accent: #0071e3;
+    --accent-soft: rgba(0,113,227,.10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --fg: #f5f5f7;
+      --muted: #a1a1a6;
+      --card: #1c1c1e;
+      --line: #2c2c2e;
+      --code: #1c1c1e;
+      --accent: #2997ff;
+      --accent-soft: rgba(41,151,255,.14);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav { border-bottom: 1px solid var(--line); }
+  nav .inner {
+    max-width: 680px; margin: 0 auto; padding: 14px 22px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px;
+  }
+  nav .brand { color: var(--fg); font-weight: 600; }
+  nav .back { color: var(--muted); }
+
+  article { max-width: 680px; margin: 0 auto; padding: 64px 22px 40px; }
+  .kicker {
+    display: inline-block;
+    font-size: 13px; font-weight: 500;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 4px 10px; border-radius: 999px;
+  }
+  h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+    font-size: clamp(32px, 6vw, 46px);
+    font-weight: 700; letter-spacing: -0.025em; line-height: 1.1;
+    margin: 18px 0 14px;
+  }
+  .meta { color: var(--muted); font-size: 15px; margin-bottom: 40px; }
+  .lead { font-size: 21px; line-height: 1.5; margin-bottom: 28px; }
+
+  h2 {
+    font-size: 26px; font-weight: 700; letter-spacing: -0.015em;
+    margin: 48px 0 14px;
+  }
+  h3 { font-size: 19px; font-weight: 600; margin: 28px 0 8px; }
+  p { font-size: 17px; margin-bottom: 16px; }
+  ul, ol { margin: 0 0 18px 22px; font-size: 17px; }
+  li { margin-bottom: 6px; }
+  strong { font-weight: 600; }
+
+  code {
+    font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: .88em;
+    background: var(--code);
+    padding: 2px 6px; border-radius: 6px;
+  }
+  .table-wrap { overflow-x: auto; margin: 8px 0 22px; }
+  table {
+    border-collapse: collapse; width: 100%;
+    font-size: 15px;
+    background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden;
+  }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { font-weight: 600; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+  tr:last-child td { border-bottom: none; }
+
+  .callout {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin: 22px 0;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 22px 40px;
+    font-size: 13px; color: var(--muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="../">Mela Digitale</a>
+    <a class="back" href="../">← Home</a>
+  </div>
+</nav>
+
+<article>
+  <span class="kicker">Note</span>
+  <h1>Come ho creato meladigitale.com in un pomeriggio</h1>
+  <p class="meta">27 ottobre 2026 · 6 minuti di lettura</p>
+
+  <p class="lead">Volevo un indirizzo email tutto mio, facile da dettare al telefono. Alla fine mi sono ritrovato con dominio, posta e sito web online nello stesso pomeriggio. Ecco come, compresi i tre intoppi che le guide ufficiali non raccontano.</p>
+
+  <h2>1. Scegliere il nome</h2>
+  <p>Il mio vecchio dominio aveva un difetto: dettandolo, la gente capiva una cosa diversa ogni volta. Questa volta mi sono dato poche regole precise:</p>
+  <ul>
+    <li><strong>Estensione .com</strong>, perché è quella che tutti scrivono d'istinto.</li>
+    <li><strong>Una parola sola</strong>, scritta esattamente come si pronuncia.</li>
+    <li><strong>Niente parole che sembrano caratteri</strong>: "spazio", "punto", "trattino", e niente numeri ("due" o "2"?).</li>
+    <li><strong>Nessun marchio registrato</strong> nel nome: un dominio così può essere contestato, e per la posta è l'ultima cosa che vuoi.</li>
+  </ul>
+  <p>E soprattutto il <strong>test del telefono</strong>: se per dettarlo devi fare lo spelling, va scartato. Dopo parecchi tentativi (i nomi belli in .com sono quasi tutti presi) è uscito <em>meladigitale</em>: la mela per la passione Apple, il digitale per tutto il resto.</p>
+
+  <h2>2. Comprarlo da iCloud</h2>
+  <p>Con iCloud+ si può comprare un dominio direttamente dalle impostazioni, nella sezione <strong>Dominio email personalizzato</strong>. Quello che non è subito evidente è che <strong>dietro c'è Cloudflare</strong>: il dominio viene registrato lì, e da lì si gestisce tutto il resto.</p>
+  <p>Il vantaggio è che la posta si configura da sola: Apple crea in automatico i record MX, SPF, DKIM e quello di verifica. Pochi minuti dopo l'acquisto la casella funzionava già.</p>
+
+  <h2>3. Mettere al sicuro la posta</h2>
+  <p>Ho aggiunto solo un record che Apple non crea: il <strong>DMARC</strong>, che dice ai server degli altri cosa fare con le email false che usano il tuo dominio.</p>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Tipo</th><th>Nome</th><th>Contenuto</th></tr>
+      <tr><td>TXT</td><td><code>_dmarc</code></td><td><code>v=DMARC1; p=none; rua=mailto:…</code></td></tr>
+    </table>
+  </div>
+  <p>Si parte con <code>p=none</code>, che si limita a raccogliere report. Quando i report sono puliti si passa a <code>quarantine</code>.</p>
+
+  <h2>4. Il sito su GitHub Pages</h2>
+  <p>GitHub Pages ospita gratis siti statici, anche con un dominio personalizzato. I passaggi:</p>
+  <ol>
+    <li>Creare un repository pubblico e caricarci <code>index.html</code>.</li>
+    <li>Aggiungere un file chiamato <code>CNAME</code> che contiene solo il nome del dominio.</li>
+    <li>In <strong>Settings → Pages</strong>, pubblicare dal branch <code>main</code>, cartella <code>/ (root)</code>.</li>
+  </ol>
+  <p>Poi, su Cloudflare, i record che puntano a GitHub:</p>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Tipo</th><th>Nome</th><th>Contenuto</th></tr>
+      <tr><td>A</td><td><code>@</code></td><td><code>185.199.108.153</code></td></tr>
+      <tr><td>A</td><td><code>@</code></td><td><code>185.199.109.153</code></td></tr>
+      <tr><td>A</td><td><code>@</code></td><td><code>185.199.110.153</code></td></tr>
+      <tr><td>A</td><td><code>@</code></td><td><code>185.199.111.153</code></td></tr>
+      <tr><td>CNAME</td><td><code>www</code></td><td><code>tuonome.github.io</code></td></tr>
+    </table>
+  </div>
+
+  <h2>5. I tre intoppi</h2>
+
+  <h3>La pagina con il lucchetto</h3>
+  <p>Nei record DNS c'era un CNAME sul dominio principale, con un lucchetto, che non si poteva modificare. È la <strong>pagina di parcheggio</strong> che Cloudflare attiva sui domini comprati tramite iCloud. Non si toglie dai record DNS ma dalle impostazioni del dominio: <strong>Disable Parking Page</strong>.</p>
+
+  <h3>La nuvoletta arancione</h3>
+  <p>Cloudflare di default fa passare il traffico dal suo proxy (la nuvoletta arancione). Con GitHub Pages va spenta: tutti i record devono essere <strong>DNS only</strong>, altrimenti GitHub non riesce a emettere il certificato HTTPS.</p>
+
+  <h3>GitHub che "si ricorda" l'errore</h3>
+  <p>Avevo aggiunto il record <code>www</code> dopo che GitHub aveva già controllato. Risultato: errore anche a record corretto, perché la risposta "non esiste" era rimasta in memoria. Prima ho verificato che il DNS fosse a posto:</p>
+  <p><code>nslookup www.meladigitale.com 1.1.1.1</code></p>
+  <p>Poi ho rimosso e reinserito il dominio personalizzato nelle impostazioni di GitHub Pages, forzando un nuovo controllo. Spunta verde.</p>
+
+  <div class="callout">
+    <p><strong>Ordine consigliato:</strong> prima tutti i record DNS su Cloudflare, poi il dominio personalizzato su GitHub. Così il primo controllo trova già tutto in ordine.</p>
+  </div>
+
+  <h2>6. Gli ultimi ritocchi</h2>
+  <ul>
+    <li><strong>DNSSEC</strong> attivato da Cloudflare: un clic, protegge da risposte DNS falsificate.</li>
+    <li><strong>WHOIS privacy</strong> lasciata attiva, per non esporre i dati personali.</li>
+    <li><strong>Enforce HTTPS</strong> su GitHub, appena il certificato è pronto.</li>
+    <li><strong>Verifica del dominio</strong> nelle impostazioni del profilo GitHub, così nessun altro può agganciarlo a un suo repository.</li>
+  </ul>
+
+  <h2>Il bilancio</h2>
+  <p>Un pomeriggio, nessun server da gestire, e come unico costo il rinnovo del dominio, una decina di dollari l'anno (iCloud+ lo avevo già). In cambio: un indirizzo email che si detta in un fiato, e un posto dove scrivere note come questa.</p>
+</article>
+
+<footer>© <span id="y">2026</span> Mela Digitale · Marco</footer>
+
+<script>
+  try { document.getElementById('y').textContent = new Date().getFullYear(); } catch (e) {}
+</script>
+</body>
+</html>
 
