@@ -44,6 +44,7 @@
   .brand-logo svg { width: 19px; height: 19px; }
   .nav { display: flex; align-items: center; gap: clamp(18px, 3vw, 34px); color: #d2d2d7; font-size: 14px; font-weight: 550; }
   .nav a { text-decoration: none; transition: color .18s ease; }
+  .nav .nav-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-inline: -8px; }
   .nav a:hover, .nav a:focus-visible, .nav a[aria-current="page"] { color: var(--accent-bright); }
   a:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 4px; border-radius: 6px; }
 
@@ -120,7 +121,9 @@
     <a class="brand" href="/"><span class="brand-logo"><svg viewBox="0 0 11 11" shape-rendering="crispEdges" aria-hidden="true"><g fill="var(--accent)"><rect x="5" y="0" width="1" height="2"/><rect x="2" y="2" width="3" height="1"/><rect x="6" y="2" width="3" height="1"/><rect x="1" y="3" width="9" height="1"/><rect x="0" y="4" width="11" height="4"/><rect x="1" y="8" width="9" height="2"/><rect x="2" y="10" width="3" height="1"/><rect x="6" y="10" width="3" height="1"/></g><rect x="2" y="4" width="1" height="2" fill="#ffffff" opacity=".45"/></svg></span><span class="brand-name">Mela Digitale</span></a>
     <div class="nav">
       <a href="/note/" aria-current="page">Note</a>
+      <span class="nav-dot" aria-hidden="true"></span>
       <a href="/#progetti">Progetti</a>
+      <span class="nav-dot" aria-hidden="true"></span>
       <a href="/#lab">Lab</a>
     </div>
   </div>
